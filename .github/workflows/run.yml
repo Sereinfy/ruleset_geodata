@@ -35,17 +35,17 @@ jobs:
           repository: v2fly/domain-list-community
           path: community
 
-      - name: Checkout DustinWin/geoip
+      - name: Checkout Sereinfy/geoip
         uses: actions/checkout@v4
         with:
-          repository: DustinWin/geoip
+          repository: Sereinfy/geoip
           ref: clash
           path: geoip/clash
 
-      - name: Checkout DustinWin/geoip
+      - name: Checkout Sereinfy/geoip
         uses: actions/checkout@v4
         with:
-          repository: DustinWin/geoip
+          repository: Sereinfy/geoip
           ref: sing-box
           path: geoip/sing-box
 
