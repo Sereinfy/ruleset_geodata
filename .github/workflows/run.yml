@@ -115,7 +115,7 @@ jobs:
       - name: Generate `clash` rule-set
         run: |
           mkdir -p ./clash-ruleset/ ./sing-box-ruleset/ ./sing-box-ruleset-compatible/
-          domains=(private ads microsoft-cn apple appleProxy twitter google github akamai apple-cn google-cn games-cn ai netflix disney max primevideo youtube tiktok bilibili proxy cn)
+          domains=(private ads microsoft-cn apple appleProxy twitter google github akamai apple-cn google-cn ai netflix disney max primevideo youtube tiktok bilibili proxy cn)
           archs=(applications networktest)
           ips=(netflixip telegramip privateip cnip)
 
