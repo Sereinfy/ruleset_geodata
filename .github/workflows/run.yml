@@ -29,10 +29,10 @@ jobs:
           repository: DustinWin/domain-list-custom
           path: custom
 
-      - name: Checkout Loyalsoldier/domain-list-custom
+      - name: Checkout v2fly/domain-list-community
         uses: actions/checkout@v4
         with:
-          repository: Loyalsoldier/domain-list-custom
+          repository: v2fly/domain-list-community
           path: community
 
       - name: Checkout Sereinfy/geoip
