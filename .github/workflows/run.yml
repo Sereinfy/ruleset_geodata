@@ -23,10 +23,10 @@ jobs:
       - name: Clone Repository
         uses: actions/checkout@master
 
-      - name: Checkout DustinWin/domain-list-custom
+      - name: Checkout Sereinfy/domain-list-custom
         uses: actions/checkout@v4
         with:
-          repository: DustinWin/domain-list-custom
+          repository: Sereinfy/domain-list-custom
           path: custom
 
       - name: Checkout v2fly/domain-list-community
