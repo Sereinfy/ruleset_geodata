@@ -47,22 +47,22 @@ jobs:
           archs1=(private ads microsoft-cn apple-cn google-cn games-cn apple appleProxy appletv twitter google github akamai ai networktest netflix disney max primevideo youtube tiktok bilibili proxy cn)
 
           # Generate `clash` geosite.dat
-          rm -f ./mydata/*
           for ((i = 0; i < 24; i++)); do
-            curl -sSL "${domains_download_url}/${archs1[i]}.list" | grep -E 'DOMAIN,|DOMAIN-SUFFIX,|DOMAIN-KEYWORD' | sed -e 's/^DOMAIN,/full:/' -e 's/^DOMAIN-SUFFIX,//' -e 's/^DOMAIN-KEYWORD,/keyword:/' > "./mydata/${archs2[i]}"
+            curl -sSL "${domains_download_url}/${archs1[i]}.list" | grep -E 'DOMAIN,|DOMAIN-SUFFIX,|DOMAIN-KEYWORD' | sed -e 's/^DOMAIN,/full:/' -e 's/^DOMAIN-SUFFIX,//' -e 's/^DOMAIN-KEYWORD,/keyword:/' > "./community/mydata/${archs1[i]}"
           done
-          curl -sSL "${domains_download_url}/fakeip-filter.list" | sed -e 's/^DOMAIN,/full:/' -e 's/^DOMAIN-SUFFIX,//' -e 's/^DOMAIN-KEYWORD,/keyword:/' -e 's/^DOMAIN-REGEX,/regexp:/' > ./mydata/fakeip-filter
-          curl -sSL "${domains_download_url}/fakeip-filter-lite.list" | grep -Ev 'DOMAIN-REGEX,|ntp|time|stun' | sed -e 's/^DOMAIN,/full:/' -e 's/^DOMAIN-SUFFIX,//' > ./mydata/fakeip-filter-lite
-          cat <<EOF >> ./mydata/fakeip-filter-lite
+          curl -sSL "${domains_download_url}/fakeip-filter.list" | sed -e 's/^DOMAIN,/full:/' -e 's/^DOMAIN-SUFFIX,//' -e 's/^DOMAIN-KEYWORD,/keyword:/' -e 's/^DOMAIN-REGEX,/regexp:/' > ./community/mydata/fakeip-filter
+          curl -sSL "${domains_download_url}/fakeip-filter-lite.list" | grep -Ev 'DOMAIN-REGEX,|ntp|time|stun' | sed -e 's/^DOMAIN,/full:/' -e 's/^DOMAIN-SUFFIX,//' > ./community/mydata/fakeip-filter-lite
+          cat <<EOF >> ./community/mydata/fakeip-filter-lite
           keyword:ntp
           keyword:time
           keyword:stun
           EOF
+          cd ./community/
           go run ./ --datapath=./mydata/ --outputname geosite.dat
 
           # Generate `clash` geosite-lite.dat
           rm -f ./mydata/ads
-          go run ./ --datapath=./mydata/ --outputname geosite-noads.dat
+          go run ./ --datapath=./mydata/ --outputname geosite-lite.dat
 
       - name: Generate `sing-box` geodata
         run: |
